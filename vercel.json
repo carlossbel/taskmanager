@@ -1,15 +1,41 @@
 {
     "version": 2,
+    "buildCommand": "npm run build",
+    "outputDirectory": "build",
     "builds": [
       {
         "src": "backend/Server.js",
         "use": "@vercel/node"
+      },
+      {
+        "src": "package.json",
+        "use": "@vercel/static-build"
       }
     ],
     "routes": [
       {
-        "src": "/(.*)",
-        "dest": "/backend/server.js"
+        "src": "/api/(.*)",
+        "dest": "/backend/Server.js"
+      },
+      {
+        "src": "^/static/(.*)",
+        "dest": "/static/$1"
+      },
+      {
+        "src": "^/favicon.ico",
+        "dest": "/favicon.ico"
+      },
+      {
+        "src": "^/manifest.json",
+        "dest": "/manifest.json"
+      },
+      {
+        "src": "^/assets/(.*)",
+        "dest": "/assets/$1"
+      },
+      {
+        "src": "^/(.*)",
+        "dest": "/index.html"
       }
     ]
   }

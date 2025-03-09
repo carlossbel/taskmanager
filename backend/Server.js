@@ -1339,9 +1339,10 @@ try {
 }
 });
 
+// Al final del archivo Server.js
 module.exports = app;
 
-// Start server only in non-Vercel environments
+// Y luego la parte de iniciar el servidor solo en desarrollo
 if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
